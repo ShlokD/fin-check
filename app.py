@@ -6,8 +6,9 @@ from dbUtils import get_users_from_db
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
+
+@app.route("/users")
+def get_users():
     users = []
     for user in get_users_from_db():
         users.append(make_user(user))
