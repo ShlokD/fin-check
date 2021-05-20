@@ -1,6 +1,6 @@
-def make_user(inpur):
+def make_user(entry):
     return {
-        "name": input["name"]
+        "name": entry["name"]
     }
 
 
