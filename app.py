@@ -1,20 +1,25 @@
 from datetime import datetime
 from flask import Flask, jsonify, request
 
-from User import make_user
+from User import make_user,make_user_entry
 from Card import make_card_entry
-from dbUtils import get_users_from_db, insert_card_into_db
+from dbUtils import *
 
 app = Flask(__name__)
 
 
-@app.route("/users")
-def get_users():
-    users = []
-    for user in get_users_from_db():
-        users.append(make_user(user))
+@app.route("/users",methods=["POST", "GET"])
+def handle_users():
+    if request.method == "GET":
+        users = []
+        for user in get_users_from_db():
+            users.append(make_user(user))
 
-    return jsonify({"users": users, "time": datetime.utcnow().isoformat(sep='-')})
+        return jsonify({"users": users, "time": datetime.utcnow().isoformat(sep='-')})
+    elif request.method == "POST":
+        user_info = make_user_entry(request.json)
+        insert_user_into_db(user_info)
+        return jsonify({ "msg": "OK"})
 
 
 @app.route("/cards", methods=["POST", "GET"])
