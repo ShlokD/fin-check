@@ -5,7 +5,7 @@ def is_valid_entry(entry):
     today = date.today()
 
     if int(entry["expiryYear"]) < today.year or int(entry["expiryMonth"]) < today.month:
-        return { "msg": "CARD_EXPIRED"}
+        return {"msg": "CARD_EXPIRED"}
 
     checksum = 0
     for idx, digit in enumerate(entry["number"]):
@@ -19,7 +19,7 @@ def is_valid_entry(entry):
             checksum += int(digit)
 
     if checksum % 10 != 0:
-        return { "msg": "INVALID_CARD_NUMBER"}
+        return {"msg": "INVALID_CARD_NUMBER"}
 
 
 def make_card(entry):
@@ -32,12 +32,12 @@ def make_card_entry(entry):
         return err_code, True
 
     return {
-            "number": entry["number"],
-            "cvv": entry["cvv"],
-            "expiryMonth": entry["expiryMonth"],
-            "expiryYear": entry["expiryYear"],
-            "limit": int(entry["limit"]),
-            "assignedTo": entry["assignedTo"],
-            "balance": int(entry["limit"]),
-            "type": entry["type"]
-    }, False
+               "number": entry["number"],
+               "cvv": entry["cvv"],
+               "expiryMonth": entry["expiryMonth"],
+               "expiryYear": entry["expiryYear"],
+               "limit": int(entry["limit"]),
+               "assignedTo": entry["assignedTo"],
+               "balance": int(entry["limit"]),
+               "type": entry["type"]
+           }, False
