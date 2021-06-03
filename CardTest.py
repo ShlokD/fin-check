@@ -1,6 +1,8 @@
 import unittest
-from Card import make_card_entry
 from datetime import date
+
+from Card import make_card_entry
+
 
 class MyTestCase(unittest.TestCase):
     def test_make_card_entry(self):

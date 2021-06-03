@@ -1,5 +1,7 @@
-from pymongo import MongoClient
 import os
+
+from pymongo import MongoClient
+
 
 def connect_to_db():
     db_conn = os.environ["ATLAS_URI"]
@@ -28,6 +30,7 @@ def insert_card_into_db(card):
     db, client = connect_to_db()
     db.cards.insert_one(card)
     client.close()
+
 
 def insert_user_into_db(user):
     db, client = connect_to_db()

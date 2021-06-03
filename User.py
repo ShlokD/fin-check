@@ -10,7 +10,7 @@ def make_user(entry):
     }
 
 
-def make_autogenerate_id(length):
+def make_id(length):
     id = ''
     for value in range(length):
         if value == 0:
@@ -22,8 +22,8 @@ def make_autogenerate_id(length):
 
 def make_user_entry(entry):
     return {
-        "id": make_autogenerate_id(6),
+        "id": make_id(6),
         "name": entry["name"].title(),
-        "department":entry["department"].title(),
+        "department": entry["department"].title(),
         "location": entry["location"].title()
     }

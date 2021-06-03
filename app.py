@@ -1,8 +1,9 @@
 from datetime import datetime
+
 from flask import Flask, jsonify, request
 
-from User import make_user, make_user_entry
 from Card import make_card_entry, make_card
+from User import make_user, make_user_entry
 from dbUtils import *
 
 app = Flask(__name__)
