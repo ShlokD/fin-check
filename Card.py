@@ -23,7 +23,16 @@ def is_valid_entry(entry):
 
 
 def make_card(entry):
-    pass
+    return {
+        "number": entry["number"],
+        "cvv": entry["cvv"],
+        "expiryMonth": entry["expiryMonth"],
+        "expiryYear": entry["expiryYear"],
+        "limit": int(entry["limit"]),
+        "assignedTo": entry["assignedTo"],
+        "balance": int(entry["limit"]),
+        "type": entry["type"]
+    }
 
 
 def make_card_entry(entry):
