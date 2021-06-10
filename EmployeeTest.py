@@ -5,11 +5,11 @@ from Employee import *
 
 class UserTests(unittest.TestCase):
     def test_make_employee(self):
-        expected = {"name": "Jon Snow"}
-        actual = make_employee({"name": "Jon Snow"})
+        expected = {"name": "Jon Snow", "department": "Security", "location": "The Wall"}
+        actual = make_employee({"name": "Jon Snow", "department": "Security", "location": "The Wall"})
         self.assertEqual(expected, actual)
 
-    def test_user_entry(self):
+    def test_employee_entry(self):
         expected_name = "Ganguram Sai"
         expected_department = "Administration"
         expected_location = "Kashi"

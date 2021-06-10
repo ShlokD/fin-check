@@ -4,7 +4,9 @@ import string
 
 def make_employee(entry):
     return {
-        "name": entry["name"]
+        "name": entry["name"],
+        "department": entry["department"],
+        "location": entry["location"]
     }
 
 

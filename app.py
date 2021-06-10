@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask import Flask, jsonify, request, send_file, send_from_directory
 
-from Card import make_card_entry
+from Card import make_card_entry, make_card
 from Employee import *
 from dbUtils import *
 
@@ -46,6 +46,16 @@ def handle_cards():
         else:
             insert_card_into_db(card_info)
             return jsonify({"msg": "OK"})
+    elif request.method == "GET":
+        cards = []
+        employees= {}
+        cards_assigned_to = []
+        for card in get_cards_from_db():
+            cards.append(make_card(card))
+            cards_assigned_to.append(card["assignedTo"])
+        for employee in get_employees_by_ids(cards_assigned_to):
+            employees[employee["id"]] = make_employee(employee)
+        return jsonify({"cards": cards, "employees": employees, "time": datetime.utcnow().isoformat(sep='-')})
 
 
 @app.after_request
