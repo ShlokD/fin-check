@@ -1,12 +1,12 @@
 import unittest
 
-from User import *
+from Employee import *
 
 
 class UserTests(unittest.TestCase):
-    def test_make_user(self):
+    def test_make_employee(self):
         expected = {"name": "Jon Snow"}
-        actual = make_user({"name": "Jon Snow"})
+        actual = make_employee({"name": "Jon Snow"})
         self.assertEqual(expected, actual)
 
     def test_user_entry(self):
@@ -14,7 +14,7 @@ class UserTests(unittest.TestCase):
         expected_department = "Administration"
         expected_location = "Kashi"
 
-        actual = make_user_entry({
+        actual = make_employee_entry({
             "name": "Ganguram Sai",
             "department": "Administration",
             "location": "Kashi"
@@ -26,7 +26,7 @@ class UserTests(unittest.TestCase):
         self.assertEqual(expected_department, actual_department)
         self.assertEqual(expected_location, actual_location)
 
-    def test_user_id(self):
+    def test_employee_id(self):
         actual_id = make_id(6)
         self.assertEqual(len(actual_id), 6)
         self.assertEqual(actual_id[0].isupper(), True)

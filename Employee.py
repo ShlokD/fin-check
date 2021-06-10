@@ -2,7 +2,7 @@ import random
 import string
 
 
-def make_user(entry):
+def make_employee(entry):
     return {
         "name": entry["name"]
     }
@@ -18,7 +18,7 @@ def make_id(length):
     return id
 
 
-def make_user_entry(entry):
+def make_employee_entry(entry):
     return {
         "id": make_id(6),
         "name": entry["name"].title(),

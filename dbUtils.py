@@ -10,11 +10,11 @@ def connect_to_db():
     return db, client
 
 
-def get_users_from_db():
+def get_employees_from_db():
     db, client = connect_to_db()
-    users_from_db = db.users.find()
+    employees_from_db = db.users.find()
     client.close()
-    return users_from_db
+    return employees_from_db
 
 
 def insert_card_into_db(card):
@@ -23,7 +23,7 @@ def insert_card_into_db(card):
     client.close()
 
 
-def insert_user_into_db(user):
+def insert_employee_into_db(employee):
     db, client = connect_to_db()
-    db.users.insert_one(user)
+    db.users.insert_one(employee)
     client.close()
