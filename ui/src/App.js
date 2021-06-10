@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState, Suspense, lazy } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import Navigation from "./Navigation";
+import Cards from "./Cards";
 
-function App() {
+import "./App.css";
+
+const People = lazy(() => import("./People"));
+const Transactions = lazy(() => import("./Transactions"));
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Suspense fallback={<div>Loading...</div>}>
+        <BrowserRouter history={createBrowserHistory()}>
+          <Navigation />
+          <Route path="/" exact component={Cards}></Route>
+          <Route path="/people" component={People}></Route>
+          <Route path="/transactions" component={Transactions}></Route>
+        </BrowserRouter>
+      </Suspense>
     </div>
   );
-}
+};
 
 export default App;
