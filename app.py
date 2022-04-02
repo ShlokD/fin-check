@@ -12,16 +12,16 @@ whitelist = ["http://localhost:3000"]
 
 @app.route("/")
 def handle_index():
-    return send_file("ui/build/index.html")
+    return send_file("./ui/build/index.html")
 
 
 @app.route("/static/<asset>/<filename>")
 def handle_js(asset, filename):
-    return send_file(f"ui/build/static/{asset}/{filename}")
+    return send_file(f"./ui/build/static/{asset}/{filename}")
 
 @app.route("/<filename>.png")
 def handle_images(filename):
-    return send_file(f"ui/build/static/images/{filename}.png")
+    return send_file(f"./ui/build/static/images/{filename}.png")
 
 @app.route("/employees", methods=["POST", "GET"])
 def handle_employees():
